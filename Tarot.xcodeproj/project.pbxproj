@@ -11,6 +11,9 @@
 		161677622AFB072000FF6DB2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161677612AFB072000FF6DB2 /* HomeView.swift */; };
 		161677642AFB078A00FF6DB2 /* DailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161677632AFB078A00FF6DB2 /* DailyView.swift */; };
 		161677662AFB07EF00FF6DB2 /* ReadingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161677652AFB07EF00FF6DB2 /* ReadingsView.swift */; };
+		161677682AFC254000FF6DB2 /* CardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161677672AFC254000FF6DB2 /* CardInfo.swift */; };
+		1616776B2AFC4B0A00FF6DB2 /* Respira Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1616776A2AFC4B0A00FF6DB2 /* Respira Black.ttf */; };
+		1616776D2AFD2FBC00FF6DB2 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1616776C2AFD2FBC00FF6DB2 /* Icons.xcassets */; };
 		16690BE32A296D5D00F0BA32 /* TarotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16690BE22A296D5D00F0BA32 /* TarotApp.swift */; };
 		16690BE52A296D5D00F0BA32 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16690BE42A296D5D00F0BA32 /* ContentView.swift */; };
 		16690BE72A296D6000F0BA32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16690BE62A296D6000F0BA32 /* Assets.xcassets */; };
@@ -23,6 +26,9 @@
 		161677612AFB072000FF6DB2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		161677632AFB078A00FF6DB2 /* DailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyView.swift; sourceTree = "<group>"; };
 		161677652AFB07EF00FF6DB2 /* ReadingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingsView.swift; sourceTree = "<group>"; };
+		161677672AFC254000FF6DB2 /* CardInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfo.swift; sourceTree = "<group>"; };
+		1616776A2AFC4B0A00FF6DB2 /* Respira Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Respira Black.ttf"; sourceTree = "<group>"; };
+		1616776C2AFD2FBC00FF6DB2 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		16690BDF2A296D5D00F0BA32 /* Tarot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tarot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16690BE22A296D5D00F0BA32 /* TarotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarotApp.swift; sourceTree = "<group>"; };
 		16690BE42A296D5D00F0BA32 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,8 +77,17 @@
 			isa = PBXGroup;
 			children = (
 				1616775F2AFB034E00FF6DB2 /* LearnView.swift */,
+				161677672AFC254000FF6DB2 /* CardInfo.swift */,
 			);
 			path = Learn;
+			sourceTree = "<group>";
+		};
+		161677692AFC4A4F00FF6DB2 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1616776A2AFC4B0A00FF6DB2 /* Respira Black.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		16690BD62A296D5D00F0BA32 = {
@@ -94,6 +109,7 @@
 		16690BE12A296D5D00F0BA32 /* Tarot */ = {
 			isa = PBXGroup;
 			children = (
+				161677692AFC4A4F00FF6DB2 /* Fonts */,
 				16690BE22A296D5D00F0BA32 /* TarotApp.swift */,
 				16690BE42A296D5D00F0BA32 /* ContentView.swift */,
 				161677592AFB00E200FF6DB2 /* Home */,
@@ -104,6 +120,7 @@
 				16690BE62A296D6000F0BA32 /* Assets.xcassets */,
 				16ED54472A2A3F9C001DF066 /* Info.plist */,
 				16690BE82A296D6000F0BA32 /* Preview Content */,
+				1616776C2AFD2FBC00FF6DB2 /* Icons.xcassets */,
 			);
 			path = Tarot;
 			sourceTree = "<group>";
@@ -182,7 +199,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1616776B2AFC4B0A00FF6DB2 /* Respira Black.ttf in Resources */,
 				16690BEA2A296D6000F0BA32 /* Preview Assets.xcassets in Resources */,
+				1616776D2AFD2FBC00FF6DB2 /* Icons.xcassets in Resources */,
 				16690BE72A296D6000F0BA32 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,6 +220,7 @@
 				161677622AFB072000FF6DB2 /* HomeView.swift in Sources */,
 				161677662AFB07EF00FF6DB2 /* ReadingsView.swift in Sources */,
 				161677602AFB034E00FF6DB2 /* LearnView.swift in Sources */,
+				161677682AFC254000FF6DB2 /* CardInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +349,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Tarot/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tarot/Info.plist;
@@ -357,6 +378,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Tarot/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tarot/Info.plist;

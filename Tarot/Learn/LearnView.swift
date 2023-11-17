@@ -13,17 +13,26 @@ struct SectionData: Identifiable {
     let items: [String]
 }
 
+struct CardInfo: Identifiable {
+    let id = UUID()
+    let name: String
+    let description: String
+    let imageName: String
+    //let keyMeanings: String
+    // add more properties as needed
+}
+
 struct LearnView: View {
     @State private var selectedSection: SectionData?
 
     let sections = [
-        SectionData(title: "Major Arcana", items: ["The Fool", "The Magician", "The High Priestess", "The Emperor", "The Empress", "The Hierophant", "The Lovers", "The Chariot", "Strength", "The Hermit", "Wheel of Fortune", "Justice", "The Hanged Man", "Death", "Temperance", "The Devil", "The Tower", "The Star", "The Moon", "The Sun", "Judgement", "The World"]),
-        SectionData(title: "Wands", items: ["Ace of Wands", "Two of Wands", "Three of Wands", "Four of Wands", "Five of Wands", "Six of Wands", "Seven of Wands", "Eight of Wands", "Nine of Wands", "Ten of Wands", "Page of Wands", "Knight of Wands", "Queen of Wands", "King of Wands"]),
-        SectionData(title: "Cups", items: ["Ace of Cups", "Two of Cups", "Three of Cups", "Four of Cups", "Five of Cups", "Six of Cups", "Seven of Cups", "Eight of Cups", "Nine of Cups", "Ten of Cups", "Page of Cups", "Knight of Cups", "Queen of Cups", "King of Cups"]),
-        SectionData(title: "Swords", items: ["Ace of Swords", "Two of Swords", "Three of Swords", "Four of Swords", "Five of Swords", "Six of Wands", "Seven of Wands", "Eight of Wands", "Nine of Wands", "Ten of Wands", "Page of Swords", "Queen of Swords", "King of Swords"]),
-        SectionData(title: "Pentacles", items: ["Ace of Pentacles", "Two of Pentacles", "Three of Pentacles", "Four of Pentacles", "Five of Pentacles", "Six of Pentacles", "Seven of Pentacles", "Eight of Pentacles", "Nine of Pentacles", "Ten of Pentacles", "Page of Pentacles", "Queen of Pentacles", "King of Pentacles"])
+        SectionData(title: "bolt", items: ["The Fool", "The Magician", "The High Priestess", "The Emperor", "The Empress", "The Hierophant", "The Lovers", "The Chariot", "Strength", "The Hermit", "Wheel of Fortune", "Justice", "The Hanged Man", "Death", "Temperance", "The Devil", "The Tower", "The Star", "The Moon", "The Sun", "Judgement", "The World"]),
+        SectionData(title: "wand", items: ["Ace of Wands", "Two of Wands", "Three of Wands", "Four of Wands", "Five of Wands", "Six of Wands", "Seven of Wands", "Eight of Wands", "Nine of Wands", "Ten of Wands", "Page of Wands", "Knight of Wands", "Queen of Wands", "King of Wands"]),
+        SectionData(title: "drink", items: ["Ace of Cups", "Two of Cups", "Three of Cups", "Four of Cups", "Five of Cups", "Six of Cups", "Seven of Cups", "Eight of Cups", "Nine of Cups", "Ten of Cups", "Page of Cups", "Knight of Cups", "Queen of Cups", "King of Cups"]),
+        SectionData(title: "pencil", items: ["Ace of Swords", "Two of Swords", "Three of Swords", "Four of Swords", "Five of Swords", "Six of Wands", "Seven of Wands", "Eight of Wands", "Nine of Wands", "Ten of Wands", "Page of Swords", "Queen of Swords", "King of Swords"]),
+        SectionData(title: "stars", items: ["Ace of Pentacles", "Two of Pentacles", "Three of Pentacles", "Four of Pentacles", "Five of Pentacles", "Six of Pentacles", "Seven of Pentacles", "Eight of Pentacles", "Nine of Pentacles", "Ten of Pentacles", "Page of Pentacles", "Queen of Pentacles", "King of Pentacles"])
     ]
-
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -39,22 +48,28 @@ struct LearnView: View {
                                 Button(action: {
                                     selectedSection = section
                                 }) {
-                                    Text(section.title)
-                                        .font(.system(size: 11))
-                                        .padding()
+                                    Image(section.title)
+                                        .renderingMode(.template)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 40, height: 40)
+                                        .foregroundColor(.white)
+                                        .padding(.horizontal, 20)
+                                        .padding(.vertical, 0)
+                                        
                                 }
                             }
+                            
                         }
                     }
-                    .padding(.horizontal)
 
                     Divider()
 
-                    // Display the selected section
+                    // Displays the selected section
                     if let selectedSection = selectedSection {
-                        SectionView(data: selectedSection.items)
+                        SectionView(data: selectedSection.items, cardInfoDictionary: cardInfoDictionary)
                     } else {
-                        SectionView(data: sections.first?.items ?? [])
+                        SectionView(data: sections.first?.items ?? [], cardInfoDictionary: cardInfoDictionary)
                     }
                 }
             }
@@ -63,22 +78,29 @@ struct LearnView: View {
     }
 }
 
+// Rows of the list (Card Image, Card name)
 struct SectionView: View {
     let data: [String]
+    let cardInfoDictionary: [String: CardInfo]
     
     var body: some View {
         List(data, id: \.self) { item in
-            NavigationLink(destination: CardDetailView(cardName: item)) {
+            NavigationLink(destination: CardDetailView(cardInfo: cardInfoDictionary[item])) {
                 HStack {
-                    Image(cardImageName(for: item))
+                    Image(cardInfoDictionary[item]?.imageName ?? "card_back")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100, height: 100)
                     Text(item)
                 }
             }
+            //.scrollContentBackground(.hidden)
+            .listRowBackground((Color.white).opacity(0.7))
         }
+        .scrollContentBackground(.hidden)
+        
     }
+}
     
     func cardImageName(for cardName: String) -> String {
         switch cardName {
@@ -168,21 +190,44 @@ struct SectionView: View {
         default: return "card_back"
         }
     }
-}
 
+// Individual card pages (Description, Key Meanings)
 struct CardDetailView: View {
-    let cardName: String
+    @Environment(\.presentationMode) var presentationMode
+    let cardInfo: CardInfo?
     
     var body: some View {
         VStack {
-            Text("Details for \(cardName)")
+            // Add the image view here
+            Image(cardInfo?.imageName ?? "card_back")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 200, height: 200)
+                .padding(.top, -220)
+            
+            // Existing code
+            Text(cardInfo?.name ?? "Unknown")
+                .font(.custom("Respira-Black", size: 20))
 
-            // Add more info about the card here
+            Text(cardInfo?.description ?? "No description available.")
+                .multilineTextAlignment(.leading)
+                .font(.system(size: 15))
+            Text("Key Meanings")
+                .multilineTextAlignment(.leading)
+                .font(.custom("Respira-Black", size: 20))
         }
-        .navigationTitle(cardName)
-    }
-}
-
+        .navigationBarTitle("", displayMode: .inline)
+                .navigationBarBackButtonHidden(true)
+                .navigationBarItems(leading:
+                    Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image(systemName: "arrow.left")
+                            .foregroundColor(.black)
+                    }
+                )
+            }
+        }
 
 #Preview {
     LearnView()

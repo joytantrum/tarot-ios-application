@@ -16,8 +16,7 @@ struct HomeView: View {
                            Image("galaxy_2")
                                .resizable()
                                .aspectRatio(contentMode: .fill)
-                               .frame(width: geometry.size.width, height: geometry.size.height)    // the frame of the image is set to the size obtained from the geometry parameter
-                           
+                               .frame(width: geometry.size.width, height: geometry.size.height)
                            Color.clear.overlay(
                                VStack(alignment: .center, spacing: 10) {
                                    
