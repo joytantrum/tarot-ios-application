@@ -4,7 +4,11 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+<<<<<<< HEAD
 		<string>Respira Black.ttf</string>
+=======
+		<string>Respira-Black.ttf</string>
+>>>>>>> df72e994784d70c93477c1cf7f4a42dad192228f
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

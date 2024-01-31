@@ -7,6 +7,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+<<<<<<< HEAD
             uuid = "2CDBC27D-02FA-4CE3-A819-5238F9699B77"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -82,6 +83,19 @@
             endingLineNumber = "9"
             landmarkName = "unknown"
             landmarkType = "0">
+=======
+            uuid = "52633285-9A38-4E3D-9127-C2100C95BACA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tarot/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
+            landmarkName = "body"
+            landmarkType = "24">
+>>>>>>> df72e994784d70c93477c1cf7f4a42dad192228f
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
